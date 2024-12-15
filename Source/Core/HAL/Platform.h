@@ -10,8 +10,8 @@
 
 #include "Core/Platform/Windows/WindowPlatformProcess.h"
 #include "Core/Platform/Windows/WindowsPlatformTLS.h"
-#include "Core/Platform/Windows/WindowsTime.h"
 #include "Core/Platform/Windows/WindowsPlatform.h"
+#include "Core/Platform/Windows/WindowsPlatformTime.h"
 
 #endif
 

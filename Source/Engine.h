@@ -4,7 +4,11 @@
 
 #ifndef ENGINE_H
 #define ENGINE_H
+#include <Core/CoreTypes.h>
+
 #include <glm.hpp>
+
+
 
 
 
@@ -12,6 +16,8 @@ class Engine {
 
 public:
     void Init();
+
+    void UpdateTime();
 
     void Tick(float deltaTime);
 

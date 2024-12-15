@@ -20,6 +20,7 @@ public:
      * @param AffinityMask 位掩码,用于指定允许该线程在哪些处理器上运行
      */
     static void SetThreadAffinityMask(uint64_t AffinityMask);
+    static bool IsProcessAffinitySet();
 
     static void SetThreadName(const char* name);
 

@@ -7,7 +7,7 @@
 #include <gtc/matrix_transform.hpp>
 #include <gtc/type_ptr.hpp>
 #include "glad/glad.h"
-
+#include "Misc/App.h"
 
 
 // 顶点着色器代码
@@ -41,6 +41,26 @@ void Engine::Init() {
     InitShaders();
     InitVertex();
     glEnable(GL_DEPTH_TEST);
+}
+
+void Engine::UpdateTime() {
+
+    static double lastRealTime = PlatformTime::GetSeconds() - 0.0001;
+
+
+
+    double realTime = PlatformTime::GetSeconds();
+    App::SetCurrentTime(realTime);
+
+
+
+    App::SetDeltaTime(App::CurrentTime() - lastRealTime);
+
+    if (App::GetDeltaTime() < 0) {
+        EL_ERROR("DeltaTime is negative!");
+        App::SetDeltaTime(0.01);
+    }
+
 }
 
 void Engine::Tick(float deltaTime) {

@@ -12,6 +12,10 @@ void WindowPlatformProcess::SetThreadAffinityMask(uint64_t AffinityMask) {
 
 }
 
+bool WindowPlatformProcess::IsProcessAffinitySet() {
+    return false;
+}
+
 void WindowPlatformProcess::SetThreadName(const char *name) {
 
 }

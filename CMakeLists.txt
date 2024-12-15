@@ -21,16 +21,14 @@ add_executable(Engine main.cpp
         Source/EngineLoop.h
         Source/Window.cpp
         Source/Window.h
-        Source/App.cpp
-        Source/App.h
+        Source/Misc/App.cpp
+        Source/Misc/App.h
         Source/Engine.cpp
         Source/Engine.h
         Source/Launcher/Launcher.cpp
         Source/Launcher/Launcher.h
         Source/Base.cpp
         Source/Base.h
-        Source/Core/Platform/Windows/WindowsTime.cpp
-        Source/Core/Platform/Windows/WindowsTime.h
         Source/Core/Platform/Windows/WindowsThread.cpp
         Source/Core/Platform/Windows/WindowsThread.h
         Source/Core/HAL/Thread/Thread.cpp
@@ -56,6 +54,14 @@ add_executable(Engine main.cpp
         Source/Core/HAL/Platform.h
         Source/Core/CoreTypes.h
         Source/Core/CoreMinimal.h
+        Source/Core/HAL/GenericPlatformTime.cpp
+        Source/Core/HAL/GenericPlatformTime.h
+        Source/Core/Platform/Windows/WindowsPlatformTime.cpp
+        Source/Core/Platform/Windows/WindowsPlatformTime.h
+        Source/Core/HAL/GenericPlatformMisc.cpp
+        Source/Core/HAL/GenericPlatformMisc.h
+        Source/Core/Platform/Windows/WindowsPlatformMisc.cpp
+        Source/Core/Platform/Windows/WindowsPlatformMisc.h
 )
 
 target_include_directories(Engine PUBLIC Thirdparty/glm-1.0.1)
