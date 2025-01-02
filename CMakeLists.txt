@@ -5,11 +5,19 @@ set(CMAKE_CXX_STANDARD 20)
 
 include(cmake/tools.cmake)
 
+# https://sdk.lunarg.com/sdk/download/1.3.296.0/windows/VulkanRT-1.3.296.0-Components.zip
+set(SHADERC_SKIP_TESTS ON)
+set(SHADERC_ENABLE_EXAMPLES OFF)
+set(SHADERC_ENABLE_COPYRIGHT_CHECK OFF)
+set(SPIRV_TOOLS_BUILD_STATIC ON)
+
 load_third_party_lib(glfw 3.4)
 load_third_party_lib(glad 4.5)
 
 load_third_party_lib(glm 1.0.1)
 load_third_party_lib(spdlog 1.15)
+load_third_party_lib(shaderc 0.0.1)
+load_third_party_lib(abseil_cpp 0.0.1)
 
 find_package(OpenGL REQUIRED)
 
@@ -62,6 +70,14 @@ add_executable(Engine main.cpp
         Source/Core/HAL/GenericPlatformMisc.h
         Source/Core/Platform/Windows/WindowsPlatformMisc.cpp
         Source/Core/Platform/Windows/WindowsPlatformMisc.h
+        Source/Core/Async/TaskGraph.cpp
+        Source/Core/Async/TaskGraph.h
+        Source/Core/Async/TaskThread.cpp
+        Source/Core/Async/TaskThread.h
+        Source/Core/Async/NamedThread.cpp
+        Source/Core/Async/NamedThread.h
+        Source/Core/Render/RHICommandList.cpp
+        Source/Core/Render/RHICommandList.h
 )
 
 target_include_directories(Engine PUBLIC Thirdparty/glm-1.0.1)
@@ -70,5 +86,10 @@ target_include_directories(Engine PUBLIC Source)
 
 target_precompile_headers(Engine PUBLIC Source/Core/CoreMinimal.h)
 
-target_link_libraries(Engine PUBLIC glfw glad OpenGL::GL glm::glm glm::glm-header-only spdlog::spdlog)
+if (MSVC)
+    set_property(TARGET Engine PROPERTY
+            MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
+endif ()
+
+target_link_libraries(Engine PUBLIC glfw glad OpenGL::GL glm::glm glm::glm-header-only spdlog::spdlog shaderc absl::base)
 

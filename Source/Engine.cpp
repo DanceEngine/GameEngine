@@ -57,7 +57,7 @@ void Engine::UpdateTime() {
     App::SetDeltaTime(App::CurrentTime() - lastRealTime);
 
     if (App::GetDeltaTime() < 0) {
-        EL_ERROR("DeltaTime is negative!");
+        // EL_ERROR("DeltaTime is negative!");
         App::SetDeltaTime(0.01);
     }
 

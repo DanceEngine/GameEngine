@@ -8,10 +8,9 @@
 
 
 class GenericPlatformTLS {
-protected:
+public:
     static constexpr uint32_t InvalidTlsSlot = 0xFFFFFFFF;
 
-public:
     static bool IsValidTlsSlot(uint32_t SlotIndex)
     {
         return SlotIndex != InvalidTlsSlot;
