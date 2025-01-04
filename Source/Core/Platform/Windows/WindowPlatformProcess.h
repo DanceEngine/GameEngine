@@ -4,7 +4,7 @@
 
 #ifndef WINDOWPLATFORMPROCESS_H
 #define WINDOWPLATFORMPROCESS_H
-#include "Source/Core/HAL/GenericPlatformProcess.h"
+#include "Core/HAL/GenericPlatformProcess.h"
 
 
 

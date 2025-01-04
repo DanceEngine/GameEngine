@@ -4,8 +4,8 @@
 
 #include "Engine.h"
 
-#include <gtc/matrix_transform.hpp>
-#include <gtc/type_ptr.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #include "glad/glad.h"
 #include "Misc/App.h"
 

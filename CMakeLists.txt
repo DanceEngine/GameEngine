@@ -4,20 +4,12 @@ project(Engine)
 set(CMAKE_CXX_STANDARD 20)
 
 include(cmake/tools.cmake)
+include(cmake/setup.cmake)
 
 # https://sdk.lunarg.com/sdk/download/1.3.296.0/windows/VulkanRT-1.3.296.0-Components.zip
-set(SHADERC_SKIP_TESTS ON)
-set(SHADERC_ENABLE_EXAMPLES OFF)
-set(SHADERC_ENABLE_COPYRIGHT_CHECK OFF)
-set(SPIRV_TOOLS_BUILD_STATIC ON)
 
-load_third_party_lib(glfw 3.4)
+
 load_third_party_lib(glad 4.5)
-
-load_third_party_lib(glm 1.0.1)
-load_third_party_lib(spdlog 1.15)
-load_third_party_lib(shaderc 0.0.1)
-load_third_party_lib(abseil_cpp 0.0.1)
 
 find_package(OpenGL REQUIRED)
 
@@ -80,16 +72,13 @@ add_executable(Engine main.cpp
         Source/Core/Render/RHICommandList.h
 )
 
-target_include_directories(Engine PUBLIC Thirdparty/glm-1.0.1)
 
 target_include_directories(Engine PUBLIC Source)
 
 target_precompile_headers(Engine PUBLIC Source/Core/CoreMinimal.h)
 
-if (MSVC)
-    set_property(TARGET Engine PROPERTY
-            MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
-endif ()
 
-target_link_libraries(Engine PUBLIC glfw glad OpenGL::GL glm::glm glm::glm-header-only spdlog::spdlog shaderc absl::base)
+setup_dependency(Engine)
+
+target_link_libraries(Engine PUBLIC  glad OpenGL::GL)
 

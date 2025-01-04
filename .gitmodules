@@ -1,6 +1,0 @@
-[submodule "Thirdparty/spdlog-1.15"]
-	path = Thirdparty/spdlog-1.15
-	url = https://github.com/gabime/spdlog.git
-[submodule "Thirdparty/shaderc-0.0.1"]
-	path = Thirdparty/shaderc-0.0.1
-	url = https://github.com/google/shaderc.git
